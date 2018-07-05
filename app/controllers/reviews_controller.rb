@@ -1,7 +1,7 @@
 class ReviewsController < ApplicationController
-
   before_action :find_book
   before_action :find_review, only: [:edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :edit]
 
   def new
     @review = Review.new
@@ -17,7 +17,6 @@ class ReviewsController < ApplicationController
     else
       render 'new'
     end
-
   end
 
   def edit
@@ -43,7 +42,7 @@ class ReviewsController < ApplicationController
   end
 
   def find_book
-    @book = Book.find_by(params[:book_id])
+    @book = Book.find(params[:book_id])
   end
 
   def find_review
