@@ -1,7 +1,16 @@
-<h1>Index view</h1>
+<h1 class="current-category"><%= params[:category] %></h1>
 
-<% @books.each do |book| %>
+<% if @books.count == 0 %>
 
-  <h2><%= link_to book.title, book_path(book) %></h2>
+  <h2>There are currently no books in this category</h2>
+
+<% else %>
+
+  <% @books.each do |book| %>
+
+    <h2><%= link_to book.title, book_path(book) %></h2>
+
+  <% end %>
 
 <% end %>
+
