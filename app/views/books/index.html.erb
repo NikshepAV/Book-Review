@@ -1,4 +1,10 @@
-<h1 class="current-category"><%= params[:category] %></h1>
+<h1 class="current-category">
+  <% if params[:category].present? %>
+    <%= params[:category] %>:
+  <% else %>
+    All Books:
+  <% end %>
+</h1>
 
 <% if @books.count == 0 %>
 
