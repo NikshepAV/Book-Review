@@ -28,10 +28,17 @@
 
           <h1>Reviews</h1>
 
-          <%= render @book.reviews %>
+          <% if @book.reviews.present? %>
+            <%= render @book.reviews %>
+          <% else %>
+            <h6>No reviews yet</h6>
+          <% end %>
 
-          <%= link_to "Add Review", new_book_review_path(@book), class: "btn btn-custom" %>
-
+          <% if user_signed_in? %>
+            <hr>
+            <%= link_to "Add Review", new_book_review_path(@book), class: "btn btn-custom" %>
+          <% end %>
+          
         </div>
 
       </div>
