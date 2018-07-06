@@ -4,7 +4,11 @@ class ReviewsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit]
 
   def new
-    @review = Review.new
+    if Review.where(:user_id => current_user.id) == nil
+      @review = Review.new
+    else
+      redirect_to book_path(@book)
+    end
   end
 
   def create
