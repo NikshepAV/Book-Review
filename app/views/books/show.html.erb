@@ -5,7 +5,7 @@
     <%= image_tag @book.book_img.url(:book_show), class: "book-show" %>
     <br><br>
     <h5>Posted by <em><%= User.find(@book.user_id).email %></em></h5>
-    <h5><%= time_ago_in_words(@book.created_at) %> ago</h5>
+    <h5><%= time_ago_in_words(@book.updated_at) %> ago</h5>
 
     <div class="links btn-group">
       <p></p>
