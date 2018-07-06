@@ -3,6 +3,8 @@
 
 
     <%= image_tag @book.book_img.url(:book_show), class: "book-show" %>
+    <br><br>
+    <h5>Posted by <%= User.find(@book.user_id).email %></h5>
 
 
     <div class="links btn-group">
