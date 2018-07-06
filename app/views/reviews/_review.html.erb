@@ -1,6 +1,7 @@
 <div class="review">
 
   <div class="review-rating" data-score="<%= review.rating %>"></div>
+  <p class="float-right"><%= time_ago_in_words(review.updated_at) %></p>
   <p class="review-comment"><%= review.comment %></p>
 
   <% if user_signed_in? %>
