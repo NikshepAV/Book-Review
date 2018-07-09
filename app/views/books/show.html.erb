@@ -29,7 +29,7 @@
           <h1>Reviews</h1>
 
           <% if @book.reviews.present? %>
-            <%= render @book.reviews %>
+            <%= render @book.reviews.sort.reverse %>
           <% else %>
             <h6>No reviews yet</h6>
             <hr>
