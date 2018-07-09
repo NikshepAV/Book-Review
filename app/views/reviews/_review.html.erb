@@ -9,7 +9,43 @@
       <% @review_flag = true %>
       <div class="links btn-group">
 
-        <%= link_to "Edit", edit_book_review_path(review.book, review), class: "btn btn-custom" %>
+        <%= link_to "Edit", "#edit-review-modal", class: "btn btn-custom", "data-toggle" => "modal" %>
+
+        <!-- Modal -->
+        <div class="modal fade" id="edit-review-modal" role="dialog">
+          <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Edit Review</h4>
+              </div>
+              <div class="modal-body">
+                <%= simple_form_for([@book, review]) do |f| %>
+
+                  <div id="rating-form">
+                    <label>Rating</label>
+                  </div>
+
+                  <%= f.input :comment %>
+                  <%= f.button :submit, class: "btn btn-custom2" %>
+
+                <% end %>
+
+                <script>
+                    $('#rating-form').raty({
+                        path: '/images',
+                        scoreName: 'review[rating]',
+                        score: <%= review.rating %>
+                    });
+                </script>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
         <%= link_to "Delete", book_review_path(review.book, review), method: :delete, data: {
             confirm: "Are you sure?"
         }, class: "btn btn-custom" %>
