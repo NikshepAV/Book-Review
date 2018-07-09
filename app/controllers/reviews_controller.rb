@@ -12,14 +12,20 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    @review = Review.new(review_params)
-    @review.book_id = @book.id
-    @review.user_id = current_user.id
-
-    if @review.save
+    if Review.where(:user_id => current_user.id, :book_id => @book.id).exists?
       redirect_to book_path(@book)
     else
-      render 'new'
+
+      @review = Review.new(review_params)
+      @review.book_id = @book.id
+      @review.user_id = current_user.id
+
+      if @review.save
+        redirect_to book_path(@book)
+      else
+        redirect_to book_path(@book)
+      end
+
     end
   end
 

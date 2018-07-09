@@ -34,7 +34,27 @@
           <% end %>
 
           <% if @review_flag != true %>
-            <%= link_to "Add Review", new_book_review_path(@book), class: "btn btn-custom" %>
+            <%#= link_to "Add Review", new_book_review_path(@book), class: "btn btn-custom" %>
+
+            <%= link_to "Add Review", "#add-review-modal", class: "btn btn-custom", "data-toggle" => "modal" %>
+            <!-- Modal -->
+            <div class="modal fade" id="add-review-modal" role="dialog">
+              <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Add Review</h4>
+                  </div>
+                  <div class="modal-body">
+                    <%= render 'reviews/form' %>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
           <% end %>
 
         </div>
