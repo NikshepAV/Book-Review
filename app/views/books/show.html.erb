@@ -7,29 +7,27 @@
     <h5>Posted by <em><%= User.find(@book.user_id).email %></em></h5>
     <h5><%= time_ago_in_words(@book.updated_at) %> ago</h5>
 
-    <div class="links btn-group">
-      <p></p>
-      <p></p>
-      <p></p>
-
-      <% if user_signed_in? %>
-        <% if @book.user_id == current_user.id %>
-          <%= link_to "Edit", edit_book_path(@book), class: "btn btn-custom" %>
-          <%= link_to "Delete", book_path(@book), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-custom" %>
-        <% end %>
-      <% end %>
-
-    </div>
-
     <div class="row">
       <div class="col-md-11">
+
+        <div class="links btn-group">
+
+          <% if user_signed_in? %>
+            <% if @book.user_id == current_user.id %>
+              <%= link_to "Edit", edit_book_path(@book), class: "btn btn-custom" %>
+              <%= link_to "Delete", book_path(@book), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-custom" %>
+            <% end %>
+          <% end %>
+
+        </div>
+
 
         <div class="reviews">
 
           <h1>Reviews</h1>
 
           <% if @book.reviews.present? %>
-            <%= render @book.reviews.sort.reverse %>
+            <%= render @book.reviews.sort_by {|a| a.updated_at}.reverse %>
           <% else %>
             <h6>No reviews yet</h6>
             <hr>
