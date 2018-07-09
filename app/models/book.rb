@@ -3,14 +3,17 @@ class Book < ApplicationRecord
   belongs_to :user
   has_many :reviews
 
+  # has_attached_file :book_img, styles: {book_index: "250x350>", book_show: "325x475>"}, default_url: "/images/:style/missing.png"
+  # validates_attachment_content_type :book_img, content_type: /\Aimage\/.*\z/
+
   # This method associates the attribute ":avatar" with a file attachment
   has_attached_file :book_img, styles: {
-      thumb: '100x100>',
-      square: '200x200#',
-      medium: '300x300>'
+      book_index: "250x350>",
+      book_show: "325x475>"
   }
 
   # Validate the attached image is image/jpg, image/png, etc
   validates_attachment_content_type :book_img, :content_type => /\Aimage\/.*\Z/
+
 
 end
