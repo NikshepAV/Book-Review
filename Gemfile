@@ -21,12 +21,20 @@ gem 'jquery-rails'
 gem 'devise', '~> 4.4', '>= 4.4.3'
 gem 'paperclip', '~> 6.0'
 gem 'aws-sdk', '~> 3.0', '>= 3.0.1'
+# Use Omniauth Google plugin
+gem 'omniauth-google-oauth2', '~> 0.4.1'
+# Use ActiveRecord Sessions
+gem 'activerecord-session_store', '~> 1.0'
+
 
 group :development, :test do
   gem 'sqlite3'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
+
+  # Use Dotenv for environment variables
+  gem 'dotenv', '~> 2.2.1'
 end
 
 group :development do
