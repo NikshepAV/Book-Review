@@ -2,7 +2,7 @@
   <%= select_tag(:category_id, options_for_select(@categories.sort)) %>
   <%= f.file_field :book_img %>
   <%= f.input :title, label: "Book Title" %>
-  <%= f.input :description, :input_html => {'rows' => 15, 'resize' => 'none'} %>
+  <%= f.input :description, :input_html => {'rows' => 15} %>
   <%= f.input :author %>
   <%= f.button :submit, class: "btn btn-custom2" %>
 <% end %>
