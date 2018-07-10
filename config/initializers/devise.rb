@@ -283,7 +283,7 @@ Devise.setup do |config|
 
 
   # Add a new OmniAuth provider
-  config.omniauth :google_oauth2, ENV['GOOGLE_APP_ID'], ENV['GOOGLE_APP_SECRET'], scope: 'userinfo.email,userinfo.profile'
+  config.omniauth :google_oauth2, ENV['GOOGLE_APP_ID'], ENV['GOOGLE_APP_SECRET'], scope: 'userinfo.email, userinfo.profile'
 
 
 end
