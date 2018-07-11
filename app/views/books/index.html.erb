@@ -6,6 +6,12 @@
   <% end %>
 </h1>
 
+<% if user_signed_in? %>
+  <p>
+    <%= request.env['omniauth.auth.info'] %>
+  </p>
+<% end %>
+
 <% if @books.count == 0 %>
 
   <h2>There are currently no books in this category</h2>
