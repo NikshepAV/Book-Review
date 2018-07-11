@@ -312,3 +312,7 @@ textarea {
   min-height: 100px;
   resize: vertical;
 }
+
+.profile-info {
+  @include background-tile;
+}
