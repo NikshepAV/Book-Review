@@ -13,6 +13,24 @@
 
 <body>
 
+<div class="container-fluid">
+  <% if notice.present? %>
+    <p class="notice alert alert-success text-center alert-dismissible">
+      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+      <strong>
+        <%= notice %>
+      </strong>
+    </p>
+  <% elsif alert.present? %>
+    <p class="alert alert alert-danger text-center alert-dismissible">
+      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+      <strong>
+        <%= alert %>
+      </strong>
+    </p>
+  <% end %>
+</div>
+
 <nav class="navbar navbar-default">
   <div class="container">
     <div class="navbar-header">
@@ -51,28 +69,9 @@
       <% end %>
 
     </ul>
-
-
   </div>
 </nav>
 
-<div class="container">
-  <% if notice.present? %>
-    <p class="notice alert alert-success text-center alert-dismissible">
-      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-      <strong>
-        <%= notice %>
-      </strong>
-    </p>
-  <% elsif alert.present? %>
-    <p class="alert alert alert-danger text-center alert-dismissible">
-      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-      <strong>
-        <%= alert %>
-      </strong>
-    </p>
-  <% end %>
-</div>
 
 <div class="container">
   <%= yield %>
