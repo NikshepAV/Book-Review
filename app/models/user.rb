@@ -13,6 +13,7 @@ class User < ApplicationRecord
       user.email = provider_data.info.email
       user.first_name = provider_data.info.first_name
       user.last_name = provider_data.info.last_name
+      user.image = provider_data.info.image
       user.password = Devise.friendly_token[0, 20]
     end
   end

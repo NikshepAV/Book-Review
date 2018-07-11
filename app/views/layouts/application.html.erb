@@ -70,14 +70,15 @@
 
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-            <%= current_user.first_name %> <span class="caret"></span>
+            <img class="rounded-circle" src="<%= current_user.image %>" height="25px" width="25px"> <%= current_user.first_name %>
+            <span class="caret"></span>
             <ul class="dropdown-menu" role="menu">
               <li><%= link_to "Account", "#", class: "link" %></li>
-              <hr>
-              <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
+              <li><%= link_to "Log Out", destroy_user_session_path, method: :delete, class: "link" %></li>
             </ul>
           </a>
         </li>
+
       <% else %>
         <li><%= link_to "Log In", new_user_session_path %></li>
         <li><%= link_to "Sign Up", new_user_registration_path %></li>
