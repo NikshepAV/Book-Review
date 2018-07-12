@@ -2,7 +2,7 @@
   <div class="row text-center">
     <div class="profile-info">
       <img class="img-rounded" src="<%= @user.image %>" height="250px" width="250px" onerror=this.src="https://www.feedbackhall.com/uploads/user-icon.png">
-      <h4><%= @user.first_name %></h4>
+      <h4><%= @user.name %></h4>
       <h4><%= @user.email %></h4>
       <% @books = Book.where(:user_id => @user.id) %>
       <% @reviews = Review.where(:user_id => @user.id) %>
