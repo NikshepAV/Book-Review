@@ -31,9 +31,17 @@
 
     <h2 class="book-title"><%= @book.title %></h2><span>(<%= @book.category.name %>)</span>
     <h3 class="book-author"><span>By </span><%= @book.author %></h3>
-    <h2 class="avg-rating">Average Rating</h2>
-    <div class="average-review-rating" data-score=<%= @average_review %>></div>
-    <span class="number-of-reviews">Based on <%= @book.reviews.count %> review(s)</span>
+    <hr>
+    <div class="row">
+      <div class="col-md-9">
+        <h2 class="avg-rating">Average Rating</h2>
+        <div class="average-review-rating" data-score=<%= @average_review %>></div>
+        <span class="number-of-reviews">Based on <%= @book.reviews.count %> review(s)</span>
+      </div>
+      <div class="col-md-3">
+        <h5><%= @book.available %> out of <%= @book.total %> book(s) available</h5>
+      </div>
+    </div>
     <p class="book-desc"><%= @book.description %></p>
 
   </div>
