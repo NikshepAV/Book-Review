@@ -1,7 +1,13 @@
 <div class="review">
 
-  <div class="review-rating" data-score="<%= review.rating %>"></div>
-  <p class="text-right"><%= time_ago_in_words(review.updated_at) %> ago</p>
+  <div class="row">
+    <div class="col-md-8">
+      <div class="review-rating" data-score="<%= review.rating %>"></div>
+    </div>
+    <div class="col-md-4">
+      <p class="text-right"><%= time_ago_in_words(review.updated_at) %> ago</p>
+    </div>
+  </div>
   <p class="review-comment"><%= review.comment %></p>
 
   <% if user_signed_in? %>
