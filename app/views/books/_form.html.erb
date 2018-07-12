@@ -1,8 +1,24 @@
 <%= simple_form_for @book, :html => {:multipart => true} do |f| %>
-  <%= select_tag(:category_id, options_for_select(@categories.sort)) %>
-  <%= f.file_field :book_img %>
-  <%= f.input :title, label: "Book Title" %>
-  <%= f.input :description, :input_html => {'rows' => 15} %>
-  <%= f.input :author %>
+
+  <div class="form-group">
+    <label>Category</label>
+    <%= select_tag(:category_id, options_for_select(@categories.sort), class: "form-control") %>
+  </div>
+
+  <%= f.file_field :book_img, id: "file_input", name: "file_input[]" %>
+
+  <div class="form-group">
+    <%= f.input :title, label: "Book Title", class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.input :description, :input_html => {'rows' => 15}, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.input :author, class: "form-control" %>
+  </div>
+
   <%= f.button :submit, class: "btn btn-custom2" %>
+
 <% end %>
