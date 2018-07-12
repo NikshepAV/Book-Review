@@ -1,11 +1,8 @@
 <div class="col-md-4">
   <div class="row">
 
-
     <%= image_tag @book.book_img.url(:book_show), class: "book-show" %>
     <br><br>
-    <h5>Posted by <em><%= User.find(@book.user_id).email %></em></h5>
-    <h5><%= time_ago_in_words(@book.updated_at) %> ago</h5>
 
     <div class="row">
       <div class="col-md-11">
@@ -21,44 +18,9 @@
 
         </div>
 
+        <h5>Posted by <em><%= User.find(@book.user_id).email %></em></h5>
+        <h5><%= time_ago_in_words(@book.updated_at) %> ago</h5>
 
-        <div class="reviews">
-
-          <h1>Reviews</h1>
-
-          <% if @book.reviews.present? %>
-            <%= render @book.reviews.sort_by {|a| a.updated_at}.reverse %>
-          <% else %>
-            <h6>No reviews yet</h6>
-            <hr>
-          <% end %>
-
-          <% if user_signed_in? %>
-            <% if @review_flag != true %>
-
-              <%= link_to "Add Review", "#add-review-modal", class: "btn btn-custom", "data-toggle" => "modal" %>
-              <!-- Modal -->
-              <div class="modal fade" id="add-review-modal" role="dialog">
-                <div class="modal-dialog">
-
-                  <!-- Modal content-->
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <button type="button" class="close" data-dismiss="modal">&times;</button>
-                      <h4 class="modal-title">Add Review</h4>
-                    </div>
-                    <div class="modal-body">
-                      <%= render 'reviews/form' %>
-                    </div>
-                  </div>
-
-                </div>
-              </div>
-
-            <% end %>
-          <% end %>
-
-        </div>
       </div>
     </div>
   </div>
@@ -73,6 +35,43 @@
     <div class="average-review-rating" data-score=<%= @average_review %>></div>
     <span class="number-of-reviews">Based on <%= @book.reviews.count %> review(s)</span>
     <p class="book-desc"><%= @book.description %></p>
+
+  </div>
+  <div class="reviews">
+
+    <h1>Reviews</h1>
+
+    <% if @book.reviews.present? %>
+      <%= render @book.reviews.sort_by {|a| a.updated_at}.reverse %>
+    <% else %>
+      <h6>No reviews yet</h6>
+      <hr>
+    <% end %>
+
+    <% if user_signed_in? %>
+      <% if @review_flag != true %>
+
+        <%= link_to "Add Review", "#add-review-modal", class: "btn btn-custom", "data-toggle" => "modal" %>
+        <!-- Modal -->
+        <div class="modal fade" id="add-review-modal" role="dialog">
+          <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Add Review</h4>
+              </div>
+              <div class="modal-body">
+                <%= render 'reviews/form' %>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      <% end %>
+    <% end %>
 
   </div>
 </div>
