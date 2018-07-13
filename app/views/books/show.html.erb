@@ -38,9 +38,11 @@
         <div class="average-review-rating" data-score=<%= @average_review %>></div>
         <span class="number-of-reviews">Based on <%= @book.reviews.count %> review(s)</span>
       </div>
-      <div class="col-md-3">
-        <h5><%= @book.available %> out of <%= @book.total %> book(s) available</h5>
-      </div>
+      <% if @book.category.name === "Hard Copy" %>
+        <div class="col-md-3">
+          <h5><%= @book.available %> out of <%= @book.total %> book(s) available</h5>
+        </div>
+      <% end %>
     </div>
     <p class="book-desc"><%= @book.description %></p>
 
