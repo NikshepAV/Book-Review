@@ -25,7 +25,7 @@
       <div class="col-md-3">
 
         <a href="/books/<%= book.id %>">
-          <%= image_tag book.book_img.url(:book_index), class: "book" %>
+          <img src="<%= book.book_img.url(:book_index) %>" class="book" onerror=this.src="https://islandpress.org/sites/default/files/400px%20x%20600px-r01BookNotPictured.jpg">
         </a>
 
       </div>

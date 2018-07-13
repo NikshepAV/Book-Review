@@ -30,6 +30,7 @@ class BooksController < ApplicationController
   def create
     @book = current_user.books.build(book_params)
     @book.category_id = params[:category_id]
+    @book.available = @book.total
 
     if @book.save
       redirect_to root_path
@@ -51,11 +52,13 @@ class BooksController < ApplicationController
 
     @book.category_id = params[:category_id]
 
+    # if @book.total >= @book.available
     if @book.update(book_params)
       redirect_to book_path(@book)
     else
       render 'edit'
     end
+    # end
 
   end
 
@@ -69,7 +72,7 @@ class BooksController < ApplicationController
   private
 
   def book_params
-    params.require(:book).permit(:title, :description, :author, :category_id, :book_img)
+    params.require(:book).permit(:title, :description, :author, :category_id, :book_img, :total, :available)
   end
 
   def find_book

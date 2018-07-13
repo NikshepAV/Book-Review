@@ -2,18 +2,33 @@
 
   <div class="form-group">
     <label>Category</label>
-    <%= select_tag(:category_id, options_for_select(@categories.sort), class: "form-control") %>
+    <%= select_tag(:category_id, options_for_select(@categories.sort), class: "form-control", onchange: 'toggleTotalBooksField();') %>
   </div>
 
-  <img id="uploaded-image" src="#" alt="uploaded-image" height="200" width="150" onerror=this.src="https://islandpress.org/sites/default/files/400px%20x%20600px-r01BookNotPictured.jpg">
-
-  <p></p>
-
-  <%= f.file_field :book_img, id: "upload-image", input_html: {'onchange' => 'readURL(this)'} %>
-
-  <p></p>
+  <div class="row">
+    <div class="col-md-4">
+      <img id="uploaded-image" src="#" alt="uploaded-image" height="200" width="150" onerror=this.src="https://islandpress.org/sites/default/files/400px%20x%20600px-r01BookNotPictured.jpg">
+      <p></p>
+      <%= f.file_field :book_img, id: "upload-image" %>
+      <p></p>
+    </div>
+    <div class="col-md-8">
+      <div class="row">
+        <div class="form-group col-md-12">
+          <%= f.input :title, label: "Book Title", class: "form-control" %>
+        </div>
+        <div class="form-group col-md-12">
+          <%= f.input :author, class: "form-control" %>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <script>
+
+      document.onload = toggleTotalBooksField;
+
+
       $("#upload-image").change(function (e) {
 
           for (var i = 0; i < e.originalEvent.srcElement.files.length; i++) {
@@ -30,16 +45,10 @@
       });
   </script>
 
-  <div class="form-group">
-    <%= f.input :title, label: "Book Title", class: "form-control" %>
-  </div>
+
 
   <div class="form-group">
     <%= f.input :description, class: "form-control" %>
-  </div>
-
-  <div class="form-group">
-    <%= f.input :author, class: "form-control" %>
   </div>
 
   <%= f.button :submit, class: "btn btn-custom2" %>

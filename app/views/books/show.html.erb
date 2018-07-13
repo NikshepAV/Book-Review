@@ -1,7 +1,7 @@
 <div class="col-md-4">
   <div class="row">
 
-    <%= image_tag @book.book_img.url(:book_show), class: "book-show" %>
+    <img src="<%= @book.book_img.url(:book_show) %>" class="book-show" onerror=this.src="https://islandpress.org/sites/default/files/400px%20x%20600px-r01BookNotPictured.jpg">
     <br><br>
 
     <div class="row">
@@ -18,7 +18,7 @@
 
         </div>
 
-        <h5>Posted by <em><%= User.find(@book.user_id).email %></em></h5>
+        <h5>Posted by <em><%= User.find(@book.user_id).first_name %></em></h5>
         <h5><%= time_ago_in_words(@book.updated_at) %> ago</h5>
 
       </div>
